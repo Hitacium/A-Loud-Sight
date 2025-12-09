@@ -14,7 +14,7 @@ const CAPTURE_INTERVAL := 0.2  # seconds between image captures
 @onready var capture_viewport: SubViewport = $SubViewport
 @onready var capture_camera: Camera3D = $SubViewport/Camera3D
 @onready var audio_player: AudioStreamPlayer = $"../head/Sonifier"
-@onready var debug_texture: TextureRect = $CanvasLayer/TextureRect
+@onready var debug_texture: TextureRect = $"../PlayerGUI/CanvasLayer/TextureRect"
 
 # Internal variables
 var generator: AudioStreamGenerator
@@ -43,10 +43,6 @@ func _ready() -> void:
 # === MAIN LOOP ===
 func _process(delta: float) -> void:
 	time_since_last_capture += delta
-
-	# Keep capture camera aligned with player's view
-	if player_camera and capture_camera:
-		capture_camera.global_transform = player_camera.global_transform
 
 	# Every CAPTURE_INTERVAL seconds, capture a new image
 	if time_since_last_capture >= CAPTURE_INTERVAL:
