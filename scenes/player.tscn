@@ -93,7 +93,6 @@ shape = SubResource("CapsuleShape3D_p0oft")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.468065, 0)
 
 [node name="Camera3D" type="Camera3D" parent="head"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.0026046, 0)
 
 [node name="RayCast3D" type="RayCast3D" parent="head"]
 target_position = Vector3(0, 0, -0.91)
@@ -101,26 +100,24 @@ collide_with_areas = true
 collide_with_bodies = false
 
 [node name="Sonifier" type="AudioStreamPlayer" parent="head"]
+script = ExtResource("3_qhqgy")
+
+[node name="DebugPreview" type="TextureRect" parent="head/Sonifier"]
+texture_filter = 1
+offset_right = 256.0
+offset_bottom = 256.0
+stretch_mode = 5
+
+[node name="ScreenchotViewport" type="SubViewport" parent="head/Sonifier"]
+size = Vector2i(256, 256)
+render_target_update_mode = 1
+
+[node name="CaptureCamera" type="Camera3D" parent="head/Sonifier/ScreenchotViewport"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.50011694, 0)
 
 [node name="PlayerGUI" parent="." instance=ExtResource("2_ywley")]
-
-[node name="CanvasLayer" type="CanvasLayer" parent="PlayerGUI"]
-
-[node name="TextureRect" type="TextureRect" parent="PlayerGUI/CanvasLayer"]
-offset_right = 40.0
-offset_bottom = 40.0
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
 &"": SubResource("AnimationLibrary_auuwx")
 }
-
-[node name="Node3D" type="Node3D" parent="."]
-script = ExtResource("3_qhqgy")
-
-[node name="SubViewport" type="SubViewport" parent="Node3D"]
-size = Vector2i(1024, 1024)
-render_target_update_mode = 4
-
-[node name="Camera3D" type="Camera3D" parent="Node3D/SubViewport"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.4706696, 0)
