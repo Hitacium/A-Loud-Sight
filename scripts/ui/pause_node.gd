@@ -1,11 +1,7 @@
 extends Control
 
-@onready var settingsPanel = $Settings
-@onready var mainPanel = $Main
-
-
-
-#region Main Panel
+@onready var settingsPanel: Panel = $Settings
+@onready var mainPanel: Control = $Main
 
 func _unhandled_input(event: InputEvent) -> void:
 	if event is InputEventKey and event.is_action_pressed("ui_cancel"):
@@ -19,7 +15,6 @@ func _unhandled_input(event: InputEvent) -> void:
 				get_tree().paused = false
 				self.hide()
 
-
 func _unpause() -> void:
 	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
 	get_tree().paused = false
@@ -31,7 +26,7 @@ func _settings() -> void:
 
 func _quit() -> void:
 	get_tree().paused = false
-	get_tree().change_scene_to_file("res://scenes/mainMenu.tscn")
+	get_tree().change_scene_to_file("res://scenes/ui/mainMenu.tscn")
 
 func _actually_quit() -> void:
 	get_tree().quit()
@@ -39,6 +34,3 @@ func _actually_quit() -> void:
 func _on_close_button() -> void:
 	settingsPanel.hide()
 	mainPanel.show() 
-
-
-#endregion

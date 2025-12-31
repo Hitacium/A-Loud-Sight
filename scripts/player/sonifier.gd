@@ -1,23 +1,22 @@
 extends AudioStreamPlayer
 
-#  === CONFIGURATION ===
-const SAMPLE_RATE := 44100 # in HZ
-const BUFFER_LENGTH = 1 # in seconds
+const SAMPLE_RATE: float = 44100 # in HZ
+const BUFFER_LENGTH: float = 1 # in seconds
 const DOWNSAMPLE_W := 16
 const DOWNSAMPLE_H := 16
-const FREQ_MIN := 400.0 # in HZ
-const FREQ_MAX := 2000.0 # in HZ
+const FREQ_MIN := 300.0 # in HZ
+const FREQ_MAX := 1000.0 # in HZ
+
+@onready var player_camera: Camera3D = $"../Camera3D"
+@onready var capture_viewport: SubViewport = $ScreenchotViewport
+@onready var capture_camera: Camera3D = $ScreenchotViewport/CaptureCamera
+@onready var preview: TextureRect = $DebugPreview	
 
 @export var capture_interval := 1  # in seconds
 @export var OSC_LENGTH := 0.3 # in seconds
 @export var EDGES_FADE := 0.01 # in seconds
 @export var debug_preview := true
 @export var logarithmic_distribution := true
-
-@onready var player_camera: Camera3D = $"../Camera3D"
-@onready var capture_viewport: SubViewport = $ScreenchotViewport
-@onready var capture_camera: Camera3D = $ScreenchotViewport/CaptureCamera
-@onready var preview: TextureRect = $DebugPreview	
 
 var time_since_last_capture := 0.0
 var playback: AudioStreamGeneratorPlayback
@@ -37,7 +36,7 @@ func _process(delta: float) -> void:
 		_capture_frame()
 
 func _init_audio_streaming() -> void:
-	var generator = AudioStreamGenerator.new()
+	var generator: AudioStreamGenerator = AudioStreamGenerator.new()
 	generator.mix_rate = SAMPLE_RATE
 	generator.buffer_length = BUFFER_LENGTH
 	stream = generator
@@ -45,7 +44,7 @@ func _init_audio_streaming() -> void:
 	playback = get_stream_playback()
 
 func _init_pixel_matrix() -> Array:
-	var m = []
+	var m: Array[Variant] = []
 	# grayscale brightness grid
 	m.resize(DOWNSAMPLE_H)
 	for y in range(DOWNSAMPLE_H):
@@ -106,14 +105,14 @@ func _generate_wave_thread(pixel_matrix: Array) -> void:
 			var amp = pixel_matrix[y][x]
 			if amp <= 0.5: continue
 			
-			var freq = _get_freq(y, h)
+			var freq: float = _get_freq(y, h)
 			_add_sine_to_buffer(freq, amp, pan, start_idx, buffer)
 	
 	_normalize(buffer)
 	call_deferred("_push_to_playback", buffer)
 
 func _get_freq(y: int, h: int) -> float:
-	var t = float(h - y - 1) / float(h - 1) if h > 1 else 0.5
+	var t := float(h - y - 1) / float(h - 1) if h > 1 else 0.5
 	if logarithmic_distribution:
 		return FREQ_MIN * pow(FREQ_MAX / FREQ_MIN, t)
 	return FREQ_MIN + (FREQ_MAX - FREQ_MIN) * t
@@ -151,7 +150,8 @@ func _normalize(buffer: PackedFloat32Array) -> void:
 
 func _push_to_playback(buffer: PackedFloat32Array):
 	for i in range(0, buffer.size(), 2):
-		playback.push_frame(Vector2(buffer[i], buffer[i+1]))
+		var v: Vector2 = Vector2(buffer[i], buffer[i+1])
+		playback.push_frame(v)
 		
 func _exit_tree():
 	if thread:

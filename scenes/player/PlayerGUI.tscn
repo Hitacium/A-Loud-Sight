@@ -1,9 +1,9 @@
 [gd_scene load_steps=5 format=3 uid="uid://bwjws4ptficgv"]
 
-[ext_resource type="Texture2D" uid="uid://bulteu43r2r6a" path="res://gfx/crosshair.png" id="1_blv8c"]
-[ext_resource type="Script" uid="uid://ddxdx0jr4w2m4" path="res://scenes/playerGUI.gd" id="1_r6s6h"]
-[ext_resource type="Script" uid="uid://dxlq8f26j8nve" path="res://scenes/pause_node.gd" id="3_81wm1"]
-[ext_resource type="PackedScene" uid="uid://bs035oor8cgug" path="res://scenes/SettingsWindow.tscn" id="4_48uxn"]
+[ext_resource type="Texture2D" uid="uid://bulteu43r2r6a" path="res://assets/ui/crosshair.png" id="1_blv8c"]
+[ext_resource type="Script" uid="uid://ddxdx0jr4w2m4" path="res://scripts/player/playerGUI.gd" id="1_r6s6h"]
+[ext_resource type="Script" uid="uid://dxlq8f26j8nve" path="res://scripts/ui/pause_node.gd" id="3_81wm1"]
+[ext_resource type="PackedScene" uid="uid://bs035oor8cgug" path="res://scenes/ui/SettingsWindow.tscn" id="4_48uxn"]
 
 [node name="PlayerGUI" type="CanvasLayer"]
 script = ExtResource("1_r6s6h")
@@ -22,14 +22,6 @@ grow_horizontal = 2
 grow_vertical = 2
 texture = ExtResource("1_blv8c")
 expand_mode = 1
-
-[node name="Label" type="Label" parent="TextureRect"]
-layout_mode = 0
-offset_left = -134.0
-offset_top = 12.0
-offset_right = 145.0
-offset_bottom = 35.0
-horizontal_alignment = 1
 
 [node name="PauseNode" type="Control" parent="."]
 process_mode = 3

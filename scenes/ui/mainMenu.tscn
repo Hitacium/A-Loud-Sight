@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://ee6lb27nmpu1"]
 
-[ext_resource type="Script" uid="uid://ohkq534tdkm0" path="res://scenes/main_menu.gd" id="1_2s5sd"]
-[ext_resource type="PackedScene" uid="uid://bs035oor8cgug" path="res://scenes/SettingsWindow.tscn" id="2_m3nvr"]
+[ext_resource type="Script" uid="uid://ohkq534tdkm0" path="res://scripts/ui/main_menu.gd" id="1_j3ryx"]
+[ext_resource type="PackedScene" uid="uid://bs035oor8cgug" path="res://scenes/ui/SettingsWindow.tscn" id="2_c8enf"]
 
 [node name="MainMenu" type="Control"]
 layout_mode = 3
@@ -10,7 +10,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-script = ExtResource("1_2s5sd")
+script = ExtResource("1_j3ryx")
 
 [node name="ColorRect" type="ColorRect" parent="."]
 layout_mode = 1
@@ -58,7 +58,7 @@ text = "Settings"
 layout_mode = 2
 text = "Exit to desktop"
 
-[node name="Settings" parent="." instance=ExtResource("2_m3nvr")]
+[node name="Settings" parent="." instance=ExtResource("2_c8enf")]
 layout_mode = 0
 anchors_preset = 0
 anchor_left = 0.0

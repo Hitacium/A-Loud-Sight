@@ -10,16 +10,16 @@ config_version=5
 
 [application]
 
-config/name="Loud Sight"
+config/name="A Loud Sight"
 config/version="1.0"
 run/main_scene="uid://ee6lb27nmpu1"
 config/features=PackedStringArray("4.5", "Forward Plus")
-config/icon="res://icon.png"
+config/icon="uid://wj5d0r1e7eej"
 
 [autoload]
 
-SettingsHandler="*res://scenes/autoload/SettingsHandler.gd"
-GameManager="*res://scenes/autoload/GameManager.gd"
+SettingsHandler="*res://scripts/autoload/SettingsHandler.gd"
+GameManager="*res://scripts/autoload/GameManager.gd"
 
 [display]
 
