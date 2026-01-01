@@ -8,11 +8,12 @@ func _input(event) -> void:
 		debuginfo.visible = !debuginfo.visible
 		debugLoop()
 
+
 func debugLoop():
 	while debuginfo.visible:
 		debuginfo.text = DEBUG_TEMPLATE.format({
 			"plrstate": GameManager.player.currentState,
-			"speed": GameManager.player.SPEED,
+			"speed": GameManager.player.player_speed,
 			"globalpos": GameManager.player.global_position,
 			"fps": Engine.get_frames_per_second()
 		})

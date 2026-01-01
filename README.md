@@ -1,22 +1,40 @@
-# Simple First Person Game template
+# A Loud Sight
 
-A really simple first person game template, that contains really basic stuff.
+**A Loud Sight** is a game made with **Godot** for a **school project**.  
+You play as a **blind person**, moving through labyrinths levels using **sound**.
 
-This template contains:
+The project explores how the **TheVoice algorithm**, using different sound distributions (logarithmic or linear), can enhance **spatial perception and orientation for disables**.
 
-- Player controller with basic movement (crouching, running, walking, looking with your mouse, etc)
-- Interactions (Interactibles3D)
-- Basic pause menu
-- Basic main menu
-- Debug information menu (sort of)
-- that's about it
+![Game Icon](icon.png)
 
-This template contains really basic stuff you'd want for a first person 3d game (probably).
+---
 
-## Getting Started
+## 🎮 Concept
 
-Delete /test_scene_assets/ and TestPlace node in the main scene, and you're good to go.
+In *A Loud Sight*, vision is removed entirely (at least for now, as it is the core gameplay mechanic).  
+Instead, the environment is perceived through **audio**. The player has a virtual camera that takes screenshots frequently and converts image data into sound.
 
-Documentation is located in the scripts themselves and in that "Search Help" button on top of your script IDE thing.
+For each **pixel**, a sine wave is played with a certain frequency, timing, panning, and amplitude:
+- The **frequency** is given by the **Y-axis**, using either the logarithmic or linear distribution
+- The **amplitude** is represented by the **brightness** (everything is on grayscale) of the pixel
+- The **time and stereo panning** are mapped to the **X-axis**
 
-![God of the worlds, 2024 AD](test_scene_assets/cat_screenshot.jpg)
+There is currently **no defined lore** — the game focuses on **statistics and scientific concepts** used for my oral exam.
+
+---
+
+## 🛠 Built With
+
+- **Godot Engine**
+- **GDScript**
+- **TheVoice algorithm principles**
+
+---
+
+## 🖥 Platforms
+
+The game, once built and released on GitHub, will be available on:
+
+- ✅ Windows
+- ✅ macOS
+- ✅ Linux

@@ -1,12 +1,12 @@
 [gd_scene load_steps=5 format=3 uid="uid://bwjws4ptficgv"]
 
-[ext_resource type="Texture2D" uid="uid://bulteu43r2r6a" path="res://assets/ui/crosshair.png" id="1_blv8c"]
-[ext_resource type="Script" uid="uid://ddxdx0jr4w2m4" path="res://scripts/player/playerGUI.gd" id="1_r6s6h"]
-[ext_resource type="Script" uid="uid://dxlq8f26j8nve" path="res://scripts/ui/pause_node.gd" id="3_81wm1"]
-[ext_resource type="PackedScene" uid="uid://bs035oor8cgug" path="res://scenes/ui/SettingsWindow.tscn" id="4_48uxn"]
+[ext_resource type="Script" uid="uid://ddxdx0jr4w2m4" path="res://scripts/player/player_gui.gd" id="1_bb8x2"]
+[ext_resource type="Texture2D" uid="uid://bulteu43r2r6a" path="res://assets/ui/crosshair.png" id="2_hq6nb"]
+[ext_resource type="Script" uid="uid://dxlq8f26j8nve" path="res://scripts/ui/pause_node.gd" id="3_edw3b"]
+[ext_resource type="PackedScene" uid="uid://bs035oor8cgug" path="res://scenes/ui/settings_window.tscn" id="4_vexfy"]
 
 [node name="PlayerGUI" type="CanvasLayer"]
-script = ExtResource("1_r6s6h")
+script = ExtResource("1_bb8x2")
 
 [node name="TextureRect" type="TextureRect" parent="."]
 anchors_preset = 8
@@ -20,7 +20,7 @@ offset_right = 5.0
 offset_bottom = 5.0
 grow_horizontal = 2
 grow_vertical = 2
-texture = ExtResource("1_blv8c")
+texture = ExtResource("2_hq6nb")
 expand_mode = 1
 
 [node name="PauseNode" type="Control" parent="."]
@@ -30,7 +30,7 @@ layout_mode = 3
 anchors_preset = 0
 offset_right = 1153.0
 offset_bottom = 649.0
-script = ExtResource("3_81wm1")
+script = ExtResource("3_edw3b")
 
 [node name="ColorRect" type="ColorRect" parent="PauseNode"]
 layout_mode = 0
@@ -38,7 +38,7 @@ offset_right = 1161.0
 offset_bottom = 655.0
 color = Color(0, 0, 0, 0.52549)
 
-[node name="Settings" parent="PauseNode" instance=ExtResource("4_48uxn")]
+[node name="Settings" parent="PauseNode" instance=ExtResource("4_vexfy")]
 layout_mode = 0
 anchors_preset = 0
 anchor_left = 0.0
@@ -104,7 +104,7 @@ offset_bottom = 94.0
 theme_override_font_sizes/font_size = 18
 text = "hi"
 
-[connection signal="Closing" from="PauseNode/Settings" to="PauseNode" method="_on_close_button"]
+[connection signal="closing" from="PauseNode/Settings" to="." method="_on_settings_closing"]
 [connection signal="pressed" from="PauseNode/Main/VBoxContainer/Button" to="PauseNode" method="_unpause"]
 [connection signal="pressed" from="PauseNode/Main/VBoxContainer/Button2" to="PauseNode" method="_settings"]
 [connection signal="pressed" from="PauseNode/Main/VBoxContainer/Button3" to="PauseNode" method="_quit"]

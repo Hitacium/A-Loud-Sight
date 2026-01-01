@@ -1,7 +1,7 @@
 [gd_scene load_steps=6 format=3 uid="uid://brpt71jl5cg2q"]
 
 [ext_resource type="Script" uid="uid://kg3ojqet1g4d" path="res://scripts/player/player.gd" id="1_yofdb"]
-[ext_resource type="PackedScene" uid="uid://bwjws4ptficgv" path="res://scenes/player/PlayerGUI.tscn" id="2_ywley"]
+[ext_resource type="PackedScene" uid="uid://bwjws4ptficgv" path="res://scenes/player/player_gui.tscn" id="2_ywley"]
 [ext_resource type="Script" uid="uid://njwl204ar4m5" path="res://scripts/player/sonifier.gd" id="3_qhqgy"]
 
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_jse87"]
@@ -25,11 +25,6 @@ shape = SubResource("CapsuleShape3D_p0oft")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.468065, 0)
 
 [node name="Camera3D" type="Camera3D" parent="head"]
-
-[node name="RayCast3D" type="RayCast3D" parent="head"]
-target_position = Vector3(0, 0, -0.91)
-collide_with_areas = true
-collide_with_bodies = false
 
 [node name="Sonifier" type="AudioStreamPlayer" parent="head"]
 script = ExtResource("3_qhqgy")

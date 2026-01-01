@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://bs035oor8cgug"]
 
-[ext_resource type="Script" uid="uid://d0bfb1utacyci" path="res://scripts/ui/settings_window.gd" id="1_wcsvo"]
+[ext_resource type="Script" uid="uid://d0bfb1utacyci" path="res://scripts/ui/settings_window.gd" id="1_p1egf"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_e2lxl"]
 bg_color = Color(0.2484, 0.2484, 0.2484, 1)
@@ -27,7 +27,7 @@ offset_bottom = 123.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_e2lxl")
-script = ExtResource("1_wcsvo")
+script = ExtResource("1_p1egf")
 
 [node name="Label" type="Label" parent="."]
 layout_mode = 1

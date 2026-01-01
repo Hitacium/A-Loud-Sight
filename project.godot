@@ -18,8 +18,8 @@ config/icon="uid://wj5d0r1e7eej"
 
 [autoload]
 
-SettingsHandler="*res://scripts/autoload/SettingsHandler.gd"
-GameManager="*res://scripts/autoload/GameManager.gd"
+SettingsHandler="*res://scripts/autoload/settings_handler.gd"
+GameManager="*res://scripts/autoload/game_manager.gd"
 
 [display]
 

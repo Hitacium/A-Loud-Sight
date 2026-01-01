@@ -1,7 +1,6 @@
 extends Node
 
 const SETTINGS_FILE_PATH := "user://settings.json"
-
 const DEFAULT_SETTINGS := {
 	"resolution": Vector2i(1152, 648),
 	"vsync": true,
@@ -11,12 +10,15 @@ const DEFAULT_SETTINGS := {
 
 var settings: Dictionary = {}
 
+
 func _ready():
 	load_settings()
 	apply_settings()
 
+
 func get_setting_value(key: String) -> Variant:
 	return settings.get(key, DEFAULT_SETTINGS.get(key))
+	
 	
 func apply_settings() -> void:
 	var resolution: Vector2i = get_setting_value("resolution")
@@ -46,6 +48,7 @@ func apply_settings() -> void:
 		linear_to_db(get_setting_value("volume"))
 	)
 
+
 func save_settings() -> void:
 	var to_save: Dictionary = settings.duplicate(true)
 
@@ -58,6 +61,7 @@ func save_settings() -> void:
 	if file:
 		file.store_string(JSON.stringify(to_save))
 		file.close()
+
 
 func load_settings() -> void:
 	if not FileAccess.file_exists(SETTINGS_FILE_PATH):
@@ -80,6 +84,7 @@ func load_settings() -> void:
 		var arr: Array = settings["resolution"]
 		if arr.size() == 2:
 			settings["resolution"] = Vector2i(arr[0], arr[1])
+
 
 func get_resolution_as_str() -> String:
 	var r: Vector2i = get_setting_value("resolution")

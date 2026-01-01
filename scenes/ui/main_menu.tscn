@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://ee6lb27nmpu1"]
 
 [ext_resource type="Script" uid="uid://ohkq534tdkm0" path="res://scripts/ui/main_menu.gd" id="1_j3ryx"]
-[ext_resource type="PackedScene" uid="uid://bs035oor8cgug" path="res://scenes/ui/SettingsWindow.tscn" id="2_c8enf"]
+[ext_resource type="PackedScene" uid="uid://bs035oor8cgug" path="res://scenes/ui/settings_window.tscn" id="2_c8enf"]
 
 [node name="MainMenu" type="Control"]
 layout_mode = 3
@@ -75,4 +75,4 @@ grow_vertical = 1
 [connection signal="pressed" from="VBoxContainer/Button" to="." method="_play"]
 [connection signal="pressed" from="VBoxContainer/Button2" to="." method="_settings"]
 [connection signal="pressed" from="VBoxContainer/Button3" to="." method="_quit"]
-[connection signal="Closing" from="Settings" to="." method="_on_close_button"]
+[connection signal="closing" from="Settings" to="." method="_on_close_button"]
