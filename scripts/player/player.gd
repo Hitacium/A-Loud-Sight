@@ -13,7 +13,7 @@ var aimlook_enabled := true
 
 
 func _ready():
-	$MeshInstance3D.hide()
+	$CollisionShape3D/MeshInstance3D.hide()
 	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
 	GameManager.player = self
 
