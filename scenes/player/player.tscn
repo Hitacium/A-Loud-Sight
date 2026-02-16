@@ -22,9 +22,6 @@ shape = SubResource("CapsuleShape3D_p0oft")
 mesh = SubResource("CapsuleMesh_gmlin")
 skeleton = NodePath("../..")
 
-[node name="CSGBox3D" type="CSGBox3D" parent="."]
-size = Vector3(1, 0, 1)
-
 [node name="head" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.6, 0)
 

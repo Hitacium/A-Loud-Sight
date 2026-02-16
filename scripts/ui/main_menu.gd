@@ -9,7 +9,7 @@ func _ready() -> void:
 	
 	
 func _play() -> void:
-	get_tree().change_scene_to_file("res://scenes/level/level_1.tscn")
+	get_tree().change_scene_to_file("res://scenes/level/level_2.tscn")
 
 
 func _settings() -> void:

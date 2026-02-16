@@ -1,0 +1,122 @@
+[gd_scene load_steps=14 format=3 uid="uid://cptwn4uo2csih"]
+
+[ext_resource type="PackedScene" uid="uid://brpt71jl5cg2q" path="res://scenes/player/player.tscn" id="1_ao1bm"]
+[ext_resource type="PackedScene" uid="uid://bhsvys1diibm3" path="res://scenes/assets/lamp_standing.tscn" id="2_u7l0e"]
+[ext_resource type="PackedScene" uid="uid://cpqfrijrfy35m" path="res://scenes/assets/bed_double_a_2.tscn" id="3_m25sp"]
+[ext_resource type="PackedScene" uid="uid://4r8qa2dl2xwg" path="res://scenes/assets/cabinet_small_decorated_2.tscn" id="4_72p4d"]
+[ext_resource type="PackedScene" uid="uid://b25a8bkq1i0to" path="res://scenes/assets/cabinet_medium_2.tscn" id="5_dsovt"]
+[ext_resource type="PackedScene" uid="uid://d4mmbmpl8u37d" path="res://scenes/assets/armchair_2.tscn" id="6_lvcdb"]
+[ext_resource type="PackedScene" uid="uid://dombs6la1imme" path="res://scenes/assets/lamp_table.tscn" id="7_72p4d"]
+[ext_resource type="PackedScene" uid="uid://bdmb4ck63p53u" path="res://assets/furnitures/rug_oval_B.gltf" id="8_dsovt"]
+[ext_resource type="PackedScene" uid="uid://4swj30uu6y4h" path="res://scenes/assets/table.tscn" id="9_lvcdb"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_u7l0e"]
+
+[sub_resource type="Sky" id="Sky_u7l0e"]
+sky_material = SubResource("ProceduralSkyMaterial_u7l0e")
+
+[sub_resource type="Environment" id="Environment_2g46k"]
+background_mode = 2
+background_energy_multiplier = 0.2
+sky = SubResource("Sky_u7l0e")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_72p4d"]
+albedo_color = Color(0.6406852, 0.42405194, 0.17005503, 1)
+
+[node name="Level2" type="Node3D"]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_2g46k")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="WorldEnvironment"]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 0, 2.6852512, -7.2034297)
+shadow_enabled = true
+
+[node name="Player" parent="." instance=ExtResource("1_ao1bm")]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 12.0771885, 0.7634804, 0.62391806)
+
+[node name="Room" type="Node" parent="."]
+
+[node name="Floor" type="CSGBox3D" parent="Room"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0053958893, -0.014847755, 0.06031108)
+use_collision = true
+size = Vector3(30, 0.5, 10)
+material = SubResource("StandardMaterial3D_72p4d")
+
+[node name="Wall" type="CSGBox3D" parent="Room"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, -5)
+use_collision = true
+size = Vector3(30, 4, 1)
+
+[node name="Wall2" type="CSGBox3D" parent="Room"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.02415955, 1.9929292, 4.9907894)
+use_collision = true
+size = Vector3(30, 4, 1)
+
+[node name="Ceiling" type="CSGBox3D" parent="Room"]
+transform = Transform3D(1, 0, 0, 0, 0.0144856805, -0.999895, 0, 0.999895, 0.0144856805, 0.00018787384, 4.000821, -0.0005364418)
+use_collision = true
+size = Vector3(30, 10, 1)
+
+[node name="Wall4" type="CSGBox3D" parent="Room"]
+transform = Transform3D(-4.3711385e-08, 0, 0.99999994, 0, 1, 0, -0.99999994, 0, -4.3711385e-08, 15, 2, 0)
+use_collision = true
+size = Vector3(10, 4, 1)
+
+[node name="Wall5" type="CSGBox3D" parent="Room"]
+transform = Transform3D(-4.3711385e-08, 0, 0.99999994, 0, 1, 0, -0.99999994, 0, -4.3711385e-08, -15, 2, 0)
+use_collision = true
+size = Vector3(10, 4, 1)
+
+[node name="Pillar" type="CSGCylinder3D" parent="Room"]
+transform = Transform3D(-4.3711168e-08, 0, 0.9999963, 0, 1, 0, -0.9999963, 0, -4.3711168e-08, -7.3126554, 2, -2.8059082)
+radius = 0.7
+height = 4.0
+sides = 64
+
+[node name="LampStanding" parent="Room" instance=ExtResource("2_u7l0e")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.4633975, 0.24938053, 3.436684)
+
+[node name="lamp_standing" parent="Room" instance=ExtResource("2_u7l0e")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.3893781, 0.249, -3.4690511)
+
+[node name="lamp_standing2" parent="Room" instance=ExtResource("2_u7l0e")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.5208936, 0.249, 3.2872581)
+
+[node name="bed_double_A2" parent="Room" instance=ExtResource("3_m25sp")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.5855093, 0.24999905, -2.9980032)
+
+[node name="cabinet_small_decorated2" parent="Room" instance=ExtResource("4_72p4d")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.3858466, 0.24999905, -3.945361)
+
+[node name="cabinet_medium2" parent="Room" instance=ExtResource("5_dsovt")]
+transform = Transform3D(-0.9199858, 0, 0.39195168, 0, 1, 0, -0.39195168, 0, -0.9199858, 2.6069083, 0.24999905, 2.5879183)
+
+[node name="armchair2" parent="Room" instance=ExtResource("6_lvcdb")]
+transform = Transform3D(0.91587996, 0, -0.4014524, 0, 1, 0, 0.4014524, 0, 0.91587996, 3.5926542, 0.24999952, 0.09519827)
+
+[node name="Node3D" parent="Room" instance=ExtResource("7_72p4d")]
+transform = Transform3D(0.6533274, 0, -0.18967006, 0, 1, 0, 0.25597045, 0, 0.4841053, 2.6784232, 1.2286286, 2.6150403)
+
+[node name="rug_oval_B2" parent="Room" instance=ExtResource("8_dsovt")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.595104, 0.23515224, -0.018323898)
+
+[node name="table" parent="Room" instance=ExtResource("9_lvcdb")]
+transform = Transform3D(2.7998223, 0, 0, 0, 1, 0, 0, 0, 2.1603782, -1.2995363, 0.23515224, 1.4449067)
+
+[node name="lamp_table" parent="Room" instance=ExtResource("7_72p4d")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.3063064, 1.2345139, 1.386718)
+
+[node name="lamp_table2" parent="Room" instance=ExtResource("7_72p4d")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11.3403015, 0.25436103, -0.13820815)
+
+[node name="SpotLight3D" type="SpotLight3D" parent="Room"]
+transform = Transform3D(1, 0, 0, 0, 0.053782564, 0.9985527, 0, -0.9985527, 0.053782564, 6.756135, 3.5479627, -2.1119728)
+
+[node name="SpotLight3D2" type="SpotLight3D" parent="Room"]
+transform = Transform3D(0.708508, -0.6550746, 0.26247603, 0.21292885, 0.55304015, 0.8054861, -0.6728133, -0.5148047, 0.5313176, -5.3844385, 3.4375103, -1.9925774)
+
+[node name="SpotLight3D3" type="SpotLight3D" parent="Room"]
+transform = Transform3D(2.6472474e-10, -0.9999817, -0.0060561965, -4.3710585e-08, -0.0060561965, 0.9999817, -1, 0, -4.371139e-08, 3.2644963, 3.3611832, 0.62391806)
+light_color = Color(0.89685386, 0.031070806, 0.639824, 1)
+light_energy = 0.395

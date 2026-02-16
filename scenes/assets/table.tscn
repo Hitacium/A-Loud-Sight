@@ -1,0 +1,17 @@
+[gd_scene load_steps=3 format=3 uid="uid://4swj30uu6y4h"]
+
+[ext_resource type="PackedScene" uid="uid://bqdcpflf2skcl" path="res://assets/furnitures/table_small.gltf" id="1_8kafe"]
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_yxkch"]
+points = PackedVector3Array(0.47993344, 1, 0.47993344, 0.47993344, 0.97993344, 0.5, 0.5, 0.97993344, 0.47993344, 0.47993344, 1, -0.4800313, -0.4800313, 1, 0.47993344, 0.47993344, 0.81998825, 0.5, -0.4800313, 0.97993344, 0.5, 0.5, 0.97993344, -0.4800313, 0.5, 0.81998825, 0.47993344, 0.47993344, 0.97993344, -0.5, -0.4800313, 1, -0.4800313, -0.5, 0.97993344, 0.47993344, 0.42991388, 0.01996867, 0.44998044, -0.4800313, 0.81998825, 0.5, 0.5, 0.81998825, -0.4800313, 0.44998044, 0.01996867, 0.42991388, 0.47993344, 0.81998825, -0.5, -0.4800313, 0.97993344, -0.5, -0.5, 0.97993344, -0.4800313, -0.5, 0.81998825, 0.47993344, 0.42991388, -7.450581e-09, 0.42991388, -0.43001175, 0.01996867, 0.44998044, -0.4500783, 0.01996867, 0.42991388, 0.44998044, 0.01996867, -0.43001175, 0.42991388, 0.01996867, -0.4500783, -0.4800313, 0.81998825, -0.5, -0.5, 0.81998825, -0.4800313, 0.42991388, -7.450581e-09, -0.43001175, -0.43001175, -7.450581e-09, 0.42991388, -0.4500783, 0.01996867, -0.43001175, -0.43001175, 0.01996867, -0.4500783, -0.43001175, -7.450581e-09, -0.43001175)
+
+[node name="table" type="Node3D"]
+
+[node name="table_small2" parent="." instance=ExtResource("1_8kafe")]
+
+[node name="StaticBody3D" type="StaticBody3D" parent="table_small2/table_small" index="0"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="table_small2/table_small/StaticBody3D"]
+shape = SubResource("ConvexPolygonShape3D_yxkch")
+
+[editable path="table_small2"]
