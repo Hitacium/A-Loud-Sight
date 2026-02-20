@@ -1,21 +1,24 @@
-[gd_scene load_steps=3 format=3 uid="uid://bhsvys1diibm3"]
+[gd_scene format=3 uid="uid://bhsvys1diibm3"]
 
 [ext_resource type="PackedScene" uid="uid://dxccg8og0arnw" path="res://assets/furnitures/lamp_standing.gltf" id="1_j56t3"]
 
 [sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_j56t3"]
 points = PackedVector3Array(-0.5, 1.7999645, -0.29649574, -0.4404855, 1.7999645, -0.44048557, -0.2594949, -1.1920929e-07, -5.9604645e-08, -0.5, 1.7999645, 0.29639775, -0.25, 2.4997725, -0.046495765, -0.29649568, 1.7999645, -0.50000006, -9.787083e-05, -1.1920929e-07, -0.25949496, -0.18353564, -1.1920929e-07, -0.1835357, -0.1904855, 2.4997725, -0.19048557, -0.18353564, -1.1920929e-07, 0.1834377, -0.4404855, 1.7999645, 0.44038755, -0.25, 2.4997725, 0.046397746, -0.21554425, 2.5199995, -0.039643764, 0.2963978, 1.7999645, -0.50000006, -0.046495706, 2.4997725, -0.25000006, 0.18343776, -1.1920929e-07, -0.1835357, 0.4403876, 1.7999645, -0.44048557, -0.16405639, 2.5199995, -0.16405645, -0.039643705, 2.5199995, -0.21554431, -9.787083e-05, -1.1920929e-07, 0.25939697, -0.29649568, 1.7999645, 0.49999994, -0.1904855, 2.4997725, 0.19038755, -0.21554425, 2.5199995, 0.039545774, 0.046397805, 2.4997725, -0.25000006, 0.25939703, -1.1920929e-07, -5.9604645e-08, 0.5, 1.7999645, -0.29649574, 0.1903876, 2.4997725, -0.19048557, 0.039545834, 2.5199995, -0.21554431, 0.18343776, -1.1920929e-07, 0.1834377, 0.2963978, 1.7999645, 0.49999994, -0.046495706, 2.4997725, 0.24999994, -0.16405639, 2.5199995, 0.16395843, 0.5, 1.7999645, 0.29639775, 0.4403876, 1.7999645, 0.44038755, 0.25, 2.4997725, -0.046495765, 0.16395849, 2.5199995, -0.16405645, 0.046397805, 2.4997725, 0.24999994, -0.039643705, 2.5199995, 0.2154463, 0.25, 2.4997725, 0.046397746, 0.1903876, 2.4997725, 0.19038755, 0.21544635, 2.5199995, -0.039643764, 0.16395849, 2.5199995, 0.16395843, 0.039545834, 2.5199995, 0.2154463, 0.21544635, 2.5199995, 0.039545774)
 
-[node name="LampStanding" type="Node3D"]
+[node name="LampStanding" type="Node3D" unique_id=1696635566]
 
-[node name="lamp_standing" parent="." instance=ExtResource("1_j56t3")]
+[node name="lamp_standing" parent="." unique_id=1686933644 instance=ExtResource("1_j56t3")]
 
-[node name="StaticBody3D" type="StaticBody3D" parent="lamp_standing"]
+[node name="StaticBody3D" type="StaticBody3D" parent="lamp_standing" unique_id=126730265]
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="lamp_standing/StaticBody3D"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="lamp_standing/StaticBody3D" unique_id=1119798865]
 shape = SubResource("ConvexPolygonShape3D_j56t3")
 
-[node name="SpotLight3D" type="SpotLight3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 0, 2.39, 0)
+[node name="SpotLight3D" type="SpotLight3D" parent="." unique_id=1369222920]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 0, 2.1501365, 0)
 light_energy = 2.0
+shadow_enabled = true
+shadow_bias = 0.54
+shadow_normal_bias = 3.636
 spot_range = 9.298279
 spot_angle = 45.343105

@@ -3,8 +3,8 @@ extends AudioStreamPlayer
 const SAMPLE_RATE := 44100 # in Hz
 const DOWNSAMPLE_W := 32
 const DOWNSAMPLE_H := 32
-const FREQ_MIN := 400.0 # in Hz
-const FREQ_MAX := 6000.0 # in Hz
+const FREQ_MIN := 300.0 # in Hz
+const FREQ_MAX := 18000.0 # in Hz
 
 @export var osc_length := 0.05 # in seconds
 @export var debug_preview := true
@@ -93,7 +93,8 @@ func create_audio_from_image(pixels: PackedByteArray) -> void:
 				if idx >= total_samples:
 					break
 
-				var window := 0.5 * (1.0 - cos(TAU * i / float(column_samples - 1)))
+				var t := float(i) / float(column_samples) 
+				var window := sin(TAU * 0.5 * t)
 				var sample := sin(phase) * amp * window
 
 				buffer[idx].x += sample * l_gain

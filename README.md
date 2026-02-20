@@ -5,11 +5,9 @@ You play as a **blind person**, moving through labyrinths levels using **sound**
 
 The project explores how the **TheVoice algorithm**, using different sound distributions (logarithmic or linear), can enhance **spatial perception and orientation for disables**.
 
-![Game Icon](icon.png)
-
 ---
 
-## 🎮 Concept
+## What is it ?
 
 In *A Loud Sight*, vision is removed entirely (at least for now, as it is the core gameplay mechanic).  
 Instead, the environment is perceived through **audio**. The player has a virtual camera that takes screenshots frequently and converts image data into sound.
@@ -23,18 +21,9 @@ There is currently **no defined lore** — the game focuses on **statistics and 
 
 ---
 
-## 🛠 Built With
+## Tools
 
 - **Godot Engine**
-- **GDScript**
-- **TheVoice algorithm principles**
+- **TheVoice algorithm**
 
 ---
-
-## 🖥 Platforms
-
-The game, once built and released on GitHub, will be available on:
-
-- ✅ Windows
-- ✅ macOS
-- ✅ Linux
