@@ -1,0 +1,184 @@
+[gd_scene format=3 uid="uid://pd6kht7g211v"]
+
+[ext_resource type="Texture2D" uid="uid://wh6yn3rmjh5c" path="res://assets/citrus_orchard_road_puresky_4k.exr" id="1_ci4up"]
+[ext_resource type="PackedScene" uid="uid://brpt71jl5cg2q" path="res://scenes/player/player.tscn" id="1_jvbyd"]
+
+[sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_jvbyd"]
+panorama = ExtResource("1_ci4up")
+
+[sub_resource type="Sky" id="Sky_ci4up"]
+sky_material = SubResource("PanoramaSkyMaterial_jvbyd")
+
+[sub_resource type="Environment" id="Environment_lt2g7"]
+background_mode = 2
+background_color = Color(0.07123137, 0.07123139, 0.07123137, 1)
+background_energy_multiplier = 0.4
+sky = SubResource("Sky_ci4up")
+ambient_light_source = 3
+ambient_light_color = Color(0.35906908, 0.35906908, 0.35906908, 1)
+ssao_enabled = true
+sdfgi_use_occlusion = true
+adjustment_enabled = true
+adjustment_brightness = 0.75
+adjustment_contrast = 1.02
+adjustment_saturation = 0.92
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_ci4up"]
+size = Vector3(3.5, 2, 2)
+
+[node name="Level3" type="Node3D" unique_id=1009580400]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=1647983334]
+environment = SubResource("Environment_lt2g7")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=2117035913]
+transform = Transform3D(1, 0, 0, 0, 0.35657498, 0.93426675, 0, -0.93426675, 0.35657498, 0, 13.718044, 18.359987)
+light_energy = 2.494
+shadow_enabled = true
+
+[node name="Player" parent="." unique_id=2110821383 instance=ExtResource("1_jvbyd")]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 22.077188, 0.7634804, 0.8239181)
+default_speed = 6
+
+[node name="OmniLight3D" type="OmniLight3D" parent="." unique_id=1325265699]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.2, 2.7, 10)
+light_color = Color(0.8346346, 0.0012669939, 0.9313586, 1)
+shadow_enabled = true
+omni_range = 1.8072714
+omni_attenuation = -15.699
+
+[node name="Labyrinth" type="Node" parent="." unique_id=177815194]
+
+[node name="CSGBox3D2" type="CSGBox3D" parent="Labyrinth" unique_id=1613803183]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 25, 4, 0)
+use_collision = true
+size = Vector3(1, 8, 25)
+
+[node name="CSGBox3D3" type="CSGBox3D" parent="Labyrinth" unique_id=1262441126]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -25, 4, 0)
+use_collision = true
+size = Vector3(1, 8, 25)
+
+[node name="CSGBox3D4" type="CSGBox3D" parent="Labyrinth" unique_id=965731345]
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 0, 4, 12.126)
+use_collision = true
+size = Vector3(1, 8, 51)
+
+[node name="CSGBox3D5" type="CSGBox3D" parent="Labyrinth" unique_id=1884817106]
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 0, 4, -11.874)
+use_collision = true
+size = Vector3(1, 8, 51)
+
+[node name="CSGBox3D6" type="CSGBox3D" parent="Labyrinth" unique_id=1809610232]
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 22.5, 4, 4.1260014)
+use_collision = true
+size = Vector3(1, 8, 6)
+
+[node name="CSGBox3D7" type="CSGBox3D" parent="Labyrinth" unique_id=1166037747]
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 22.5, 4, -5.8739986)
+use_collision = true
+size = Vector3(1, 8, 6)
+
+[node name="CSGBox3D8" type="CSGBox3D" parent="Labyrinth" unique_id=1797655978]
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 16.5, 4, -1.8739986)
+use_collision = true
+size = Vector3(1, 8, 6)
+
+[node name="CSGBox3D13" type="CSGBox3D" parent="Labyrinth" unique_id=1452232741]
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 5.5, 4, 2.1260014)
+use_collision = true
+size = Vector3(1, 8, 6)
+
+[node name="CSGBox3D17" type="CSGBox3D" parent="Labyrinth" unique_id=808042926]
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, -2.5, 4, -1.3739988)
+use_collision = true
+size = Vector3(1, 8, 11)
+
+[node name="CSGBox3D15" type="CSGBox3D" parent="Labyrinth" unique_id=1846258760]
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 10.5, 4, -1.8739986)
+use_collision = true
+size = Vector3(1, 8, 6)
+
+[node name="CSGBox3D16" type="CSGBox3D" parent="Labyrinth" unique_id=1272710038]
+transform = Transform3D(-1, 0, 8.742278e-08, 0, 1, 0, -8.742278e-08, 0, -1, 8, 4, -4.3739986)
+use_collision = true
+size = Vector3(1, 8, 6)
+
+[node name="CSGBox3D21" type="CSGBox3D" parent="Labyrinth" unique_id=538045958]
+transform = Transform3D(-1, 0, 8.742278e-08, 0, 1, 0, -8.742278e-08, 0, -1, -2.9563346, 4, 8.376001)
+use_collision = true
+size = Vector3(1, 8, 8.5)
+
+[node name="CSGBox3D18" type="CSGBox3D" parent="Labyrinth" unique_id=2090272099]
+transform = Transform3D(-1, 0, 8.742278e-08, 0, 1, 0, -8.742278e-08, 0, -1, -7.5, 4, -4.3739986)
+use_collision = true
+size = Vector3(1, 8, 6)
+
+[node name="CSGBox3D24" type="CSGBox3D" parent="Labyrinth" unique_id=342578523]
+transform = Transform3D(-1, 0, 8.742278e-08, 0, 1, 0, -8.742278e-08, 0, -1, -19.5, 4, 8.126001)
+use_collision = true
+size = Vector3(1, 8, 8)
+
+[node name="CSGBox3D25" type="CSGBox3D" parent="Labyrinth" unique_id=1433538547]
+transform = Transform3D(-1, 0, 8.742278e-08, 0, 1, 0, -8.742278e-08, 0, -1, -19.5, 4, 8.126001)
+use_collision = true
+size = Vector3(1, 8, 8)
+
+[node name="CSGBox3D26" type="CSGBox3D" parent="Labyrinth" unique_id=1502834169]
+transform = Transform3D(-1, 0, 8.742278e-08, 0, 1, 0, -8.742278e-08, 0, -1, -19.5, 4, 8.348749)
+use_collision = true
+size = Vector3(1, 8, 8.531189)
+
+[node name="CSGBox3D14" type="CSGBox3D" parent="Labyrinth" unique_id=580508794]
+transform = Transform3D(-1, 0, 8.742278e-08, 0, 1, 0, -8.742278e-08, 0, -1, 2.4999998, 4, 5.3760014)
+use_collision = true
+size = Vector3(1, 8, 14.5)
+
+[node name="CSGBox3D22" type="CSGBox3D" parent="Labyrinth" unique_id=716058856]
+transform = Transform3D(1.3113416e-07, 0, 1, 0, 1, 0, -1, 0, 1.3113416e-07, -10.95, 4, 4.5760016)
+use_collision = true
+size = Vector3(1, 8, 17)
+
+[node name="CSGBox3D9" type="CSGBox3D" parent="Labyrinth" unique_id=106673182]
+transform = Transform3D(-1, 0, 8.742278e-08, 0, 1, 0, -8.742278e-08, 0, -1, -2, 4, -9.123999)
+use_collision = true
+size = Vector3(1, 8, 5.5)
+
+[node name="CSGBox3D10" type="CSGBox3D" parent="Labyrinth" unique_id=978180908]
+transform = Transform3D(-1, 0, 8.742278e-08, 0, 1, 0, -8.742278e-08, 0, -1, 13.5, 4, 0.62600136)
+use_collision = true
+size = Vector3(1, 8, 6)
+
+[node name="CSGBox3D11" type="CSGBox3D" parent="Labyrinth" unique_id=937187923]
+transform = Transform3D(-1, 0, 8.742278e-08, 0, 1, 0, -8.742278e-08, 0, -1, 13.5, 4, 3.6260014)
+use_collision = true
+size = Vector3(1, 8, 6)
+
+[node name="CSGBox3D12" type="CSGBox3D" parent="Labyrinth" unique_id=1676951669]
+transform = Transform3D(1.3113416e-07, 0, 1, 0, 1, 0, -1, 0, 1.3113416e-07, 3, 4, -6.873999)
+use_collision = true
+size = Vector3(1, 8, 11)
+
+[node name="CSGBox3D19" type="CSGBox3D" parent="Labyrinth" unique_id=2004202520]
+transform = Transform3D(1.3113416e-07, 0, 1, 0, 1, 0, -1, 0, 1.3113416e-07, -13.5, 4, -6.873999)
+use_collision = true
+size = Vector3(1, 8, 13)
+
+[node name="CSGBox3D20" type="CSGBox3D" parent="Labyrinth" unique_id=1330157298]
+transform = Transform3D(1.3113416e-07, 0, 1, 0, 1, 0, -1, 0, 1.3113416e-07, -13.5, 4, -1.3739994)
+use_collision = true
+size = Vector3(1, 8, 13)
+
+[node name="CSGBox3D" type="CSGBox3D" parent="Labyrinth" unique_id=2125770747]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.037857056, 0, 0)
+use_collision = true
+size = Vector3(50, 1, 25)
+
+[node name="TheEnd" type="Area3D" parent="." unique_id=1254430797]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3, 9)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="TheEnd" unique_id=836726398]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.20000002, -1, 1)
+shape = SubResource("BoxShape3D_ci4up")
+
+[connection signal="body_entered" from="TheEnd" to="Player" method="_on_the_end_body_entered"]

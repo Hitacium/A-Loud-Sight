@@ -46,3 +46,20 @@ func _physics_process(delta: float) -> void:
 		velocity.z = move_toward(velocity.z, 0, player_speed) 
 	
 	move_and_slide()
+
+func _on_switch_level_2_body_entered(body: Node3D) -> void:
+	if body == $".":
+		call_deferred("_go_to_level_2")
+		
+func _go_to_level_2():
+	get_tree().change_scene_to_file("res://scenes/level/level_2.tscn")
+
+func _on_switch_level_3_body_entered(body: Node3D) -> void:
+	if body == $".":
+		call_deferred("_go_to_level_3")
+
+func _go_to_level_3() -> void:
+	get_tree().change_scene_to_file("res://scenes/level/level_3.tscn")
+
+func _on_the_end_body_entered(_body: Node3D) -> void:
+	get_tree().quit()

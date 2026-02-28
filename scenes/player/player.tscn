@@ -1,4 +1,4 @@
-[gd_scene load_steps=6 format=3 uid="uid://brpt71jl5cg2q"]
+[gd_scene format=3 uid="uid://brpt71jl5cg2q"]
 
 [ext_resource type="Script" uid="uid://kg3ojqet1g4d" path="res://scripts/player/player.gd" id="1_yofdb"]
 [ext_resource type="PackedScene" uid="uid://bwjws4ptficgv" path="res://scenes/player/player_gui.tscn" id="2_ywley"]
@@ -11,36 +11,36 @@ height = 1.7
 lightmap_size_hint = Vector2i(17, 13)
 height = 1.7
 
-[node name="Player" type="CharacterBody3D"]
+[node name="Player" type="CharacterBody3D" unique_id=2110821383]
 script = ExtResource("1_yofdb")
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=1215950722]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.85, 0)
 shape = SubResource("CapsuleShape3D_p0oft")
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="CollisionShape3D"]
+[node name="MeshInstance3D" type="MeshInstance3D" parent="CollisionShape3D" unique_id=1316728438]
 mesh = SubResource("CapsuleMesh_gmlin")
 skeleton = NodePath("../..")
 
-[node name="head" type="Node3D" parent="."]
+[node name="head" type="Node3D" parent="." unique_id=505810183]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.6, 0)
 
-[node name="Camera3D" type="Camera3D" parent="head"]
+[node name="Camera3D" type="Camera3D" parent="head" unique_id=1566804085]
 
-[node name="Sonifier" type="AudioStreamPlayer" parent="head"]
+[node name="Sonifier" type="AudioStreamPlayer" parent="head" unique_id=2095334213]
 script = ExtResource("3_qhqgy")
 
-[node name="DebugPreview" type="TextureRect" parent="head/Sonifier"]
+[node name="DebugPreview" type="TextureRect" parent="head/Sonifier" unique_id=1115796373]
 texture_filter = 1
 offset_right = 256.0
 offset_bottom = 256.0
 stretch_mode = 5
 
-[node name="ScreenchotViewport" type="SubViewport" parent="head/Sonifier"]
+[node name="ScreenchotViewport" type="SubViewport" parent="head/Sonifier" unique_id=818352717]
 size = Vector2i(256, 256)
 render_target_update_mode = 1
 
-[node name="CaptureCamera" type="Camera3D" parent="head/Sonifier/ScreenchotViewport"]
+[node name="CaptureCamera" type="Camera3D" parent="head/Sonifier/ScreenchotViewport" unique_id=146705316]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.6, 0)
 
-[node name="PlayerGUI" parent="." instance=ExtResource("2_ywley")]
+[node name="PlayerGUI" parent="." unique_id=614238825 instance=ExtResource("2_ywley")]

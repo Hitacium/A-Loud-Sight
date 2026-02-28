@@ -2,7 +2,7 @@ extends Node
 
 const SETTINGS_FILE_PATH := "user://settings.json"
 const DEFAULT_SETTINGS := {
-	"resolution": Vector2i(1152, 648),
+	"resolution": Vector2i(1920, 1080),
 	"vsync": true,
 	"fullscreen": false,
 	"volume": 1.0
