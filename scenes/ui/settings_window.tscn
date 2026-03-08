@@ -1,4 +1,4 @@
-[gd_scene load_steps=3 format=3 uid="uid://bs035oor8cgug"]
+[gd_scene format=3 uid="uid://bs035oor8cgug"]
 
 [ext_resource type="Script" uid="uid://d0bfb1utacyci" path="res://scripts/ui/settings_window.gd" id="1_p1egf"]
 
@@ -13,7 +13,7 @@ corner_radius_top_right = 3
 corner_radius_bottom_right = 3
 corner_radius_bottom_left = 3
 
-[node name="Settings" type="Panel"]
+[node name="Settings" type="Panel" unique_id=2043415232]
 visible = false
 anchors_preset = 8
 anchor_left = 0.5
@@ -29,7 +29,7 @@ grow_vertical = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_e2lxl")
 script = ExtResource("1_p1egf")
 
-[node name="Label" type="Label" parent="."]
+[node name="Label" type="Label" parent="." unique_id=1513905751]
 layout_mode = 1
 anchors_preset = 5
 anchor_left = 0.5
@@ -41,7 +41,7 @@ offset_bottom = 29.0
 grow_horizontal = 2
 text = "Settings"
 
-[node name="HSeparator" type="HSeparator" parent="."]
+[node name="HSeparator" type="HSeparator" parent="." unique_id=1694877014]
 layout_mode = 1
 anchors_preset = 5
 anchor_left = 0.5
@@ -52,7 +52,7 @@ offset_right = 107.0
 offset_bottom = 34.0
 grow_horizontal = 2
 
-[node name="OptionButton" type="OptionButton" parent="."]
+[node name="OptionButton" type="OptionButton" parent="." unique_id=990789508]
 layout_mode = 0
 offset_left = 115.0
 offset_top = 37.5
@@ -70,7 +70,7 @@ popup/item_2/id = 2
 popup/item_3/text = "640x360"
 popup/item_3/id = 3
 
-[node name="Label" type="Label" parent="OptionButton"]
+[node name="Label" type="Label" parent="OptionButton" unique_id=653114431]
 layout_mode = 0
 offset_left = -109.0
 offset_top = 2.0
@@ -78,14 +78,14 @@ offset_right = -26.0
 offset_bottom = 25.0
 text = "Resolution"
 
-[node name="CheckBox" type="CheckBox" parent="."]
+[node name="CheckBox" type="CheckBox" parent="." unique_id=1218362405]
 layout_mode = 0
 offset_left = 192.0
 offset_top = 72.5
 offset_right = 216.0
 offset_bottom = 96.5
 
-[node name="Label" type="Label" parent="CheckBox"]
+[node name="Label" type="Label" parent="CheckBox" unique_id=1854615048]
 layout_mode = 0
 offset_left = -186.0
 offset_top = -1.0
@@ -93,14 +93,14 @@ offset_right = -103.0
 offset_bottom = 22.0
 text = "Fullscreen"
 
-[node name="CheckBox2" type="CheckBox" parent="."]
+[node name="CheckBox2" type="CheckBox" parent="." unique_id=1320119697]
 layout_mode = 0
 offset_left = 192.0
 offset_top = 103.5
 offset_right = 216.0
 offset_bottom = 127.5
 
-[node name="Label" type="Label" parent="CheckBox2"]
+[node name="Label" type="Label" parent="CheckBox2" unique_id=636794391]
 layout_mode = 0
 offset_left = -186.0
 offset_top = -1.0
@@ -108,7 +108,7 @@ offset_right = -103.0
 offset_bottom = 22.0
 text = "VSync"
 
-[node name="Button" type="Button" parent="."]
+[node name="Button" type="Button" parent="." unique_id=38399351]
 layout_mode = 0
 offset_left = 5.0
 offset_top = 213.0
@@ -116,7 +116,7 @@ offset_right = 217.0
 offset_bottom = 246.0
 text = "Apply"
 
-[node name="Button2" type="Button" parent="."]
+[node name="Button2" type="Button" parent="." unique_id=1557195042]
 layout_mode = 0
 offset_left = 194.0
 offset_top = 2.5
@@ -125,7 +125,7 @@ offset_bottom = 30.5
 theme_override_font_sizes/font_size = 14
 text = "X"
 
-[node name="HSlider" type="HSlider" parent="."]
+[node name="HSlider" type="HSlider" parent="." unique_id=2102430182]
 layout_mode = 0
 offset_left = 91.0
 offset_top = 133.5
@@ -135,7 +135,7 @@ max_value = 1.0
 step = 0.05
 value = 1.0
 
-[node name="Label" type="Label" parent="HSlider"]
+[node name="Label" type="Label" parent="HSlider" unique_id=173334364]
 layout_mode = 0
 offset_left = -85.0
 offset_top = -3.0

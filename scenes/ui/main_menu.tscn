@@ -1,9 +1,10 @@
-[gd_scene load_steps=3 format=3 uid="uid://ee6lb27nmpu1"]
+[gd_scene format=3 uid="uid://ee6lb27nmpu1"]
 
 [ext_resource type="Script" uid="uid://ohkq534tdkm0" path="res://scripts/ui/main_menu.gd" id="1_j3ryx"]
+[ext_resource type="FontFile" uid="uid://cpo3opd77qmex" path="res://assets/MGF-PinlockPersonalUse.otf" id="2_1g8jr"]
 [ext_resource type="PackedScene" uid="uid://bs035oor8cgug" path="res://scenes/ui/settings_window.tscn" id="2_c8enf"]
 
-[node name="MainMenu" type="Control"]
+[node name="MainMenu" type="Control" unique_id=43545414]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -12,65 +13,73 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_j3ryx")
 
-[node name="ColorRect" type="ColorRect" parent="."]
+[node name="ColorRect" type="ColorRect" parent="." unique_id=1918101963]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-color = Color(0, 0, 0, 1)
+color = Color(0.21751943, 0.00024202548, 0.3046876, 1)
 
-[node name="Label" type="Label" parent="."]
+[node name="Label" type="Label" parent="." unique_id=2012516554]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -125.0
-offset_top = -132.0
-offset_right = 123.0
-offset_bottom = -82.0
+offset_left = -413.0
+offset_top = -265.0
+offset_right = 413.0
+offset_bottom = -125.0
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_font_sizes/font_size = 36
+theme_override_fonts/font = ExtResource("2_1g8jr")
+theme_override_font_sizes/font_size = 96
 text = "A Loud Sight"
 horizontal_alignment = 1
 uppercase = true
 
-[node name="VBoxContainer" type="VBoxContainer" parent="."]
-layout_mode = 0
-offset_left = 466.0
-offset_top = 300.0
-offset_right = 688.0
-offset_bottom = 482.0
+[node name="VBoxContainer" type="VBoxContainer" parent="." unique_id=1441600426]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -300.0
+offset_top = -90.0
+offset_right = 300.0
+offset_bottom = 201.0
+grow_horizontal = 2
+grow_vertical = 2
 
-[node name="Button" type="Button" parent="VBoxContainer"]
+[node name="Button" type="Button" parent="VBoxContainer" unique_id=1900349443]
 layout_mode = 2
+theme_override_fonts/font = ExtResource("2_1g8jr")
+theme_override_font_sizes/font_size = 64
 text = "Play"
 
-[node name="Button2" type="Button" parent="VBoxContainer"]
+[node name="Button2" type="Button" parent="VBoxContainer" unique_id=123074508]
 layout_mode = 2
+theme_override_fonts/font = ExtResource("2_1g8jr")
+theme_override_font_sizes/font_size = 64
 text = "Settings"
 
-[node name="Button3" type="Button" parent="VBoxContainer"]
+[node name="Button3" type="Button" parent="VBoxContainer" unique_id=661696010]
 layout_mode = 2
+theme_override_fonts/font = ExtResource("2_1g8jr")
+theme_override_font_sizes/font_size = 64
 text = "Exit to desktop"
 
-[node name="Settings" parent="." instance=ExtResource("2_c8enf")]
-layout_mode = 0
-anchors_preset = 0
-anchor_left = 0.0
-anchor_top = 0.0
-anchor_right = 0.0
-anchor_bottom = 0.0
-offset_left = 468.0
-offset_top = 239.0
-offset_right = 690.0
-offset_bottom = 490.0
-grow_horizontal = 1
-grow_vertical = 1
+[node name="Settings" parent="." unique_id=2014990133 instance=ExtResource("2_c8enf")]
+visible = true
+layout_mode = 1
+offset_left = -111.0
+offset_top = -125.5
+offset_right = 111.0
+offset_bottom = 125.5
 
 [connection signal="pressed" from="VBoxContainer/Button" to="." method="_play"]
 [connection signal="pressed" from="VBoxContainer/Button2" to="." method="_settings"]
