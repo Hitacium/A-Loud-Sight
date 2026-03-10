@@ -2,6 +2,7 @@
 
 [ext_resource type="Texture2D" uid="uid://wh6yn3rmjh5c" path="res://assets/citrus_orchard_road_puresky_4k.exr" id="1_ci4up"]
 [ext_resource type="PackedScene" uid="uid://brpt71jl5cg2q" path="res://scenes/player/player.tscn" id="1_jvbyd"]
+[ext_resource type="Script" uid="uid://b1ncdgsq3tarr" path="res://scenes/player/stopwatch.gd" id="3_lt2g7"]
 
 [sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_jvbyd"]
 panorama = ExtResource("1_ci4up")
@@ -39,6 +40,9 @@ shadow_enabled = true
 [node name="Player" parent="." unique_id=2110821383 instance=ExtResource("1_jvbyd")]
 transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 22.077188, 0.7634804, 0.8239181)
 default_speed = 6
+
+[node name="Stopwatch" type="Node" parent="." unique_id=1311825743 groups=["stopwatch"]]
+script = ExtResource("3_lt2g7")
 
 [node name="OmniLight3D" type="OmniLight3D" parent="." unique_id=1325265699]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.2, 2.7, 10)

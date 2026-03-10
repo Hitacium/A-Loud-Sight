@@ -4,17 +4,15 @@ const SETTINGS_FILE_PATH := "user://settings.json"
 const DEFAULT_SETTINGS := {
 	"resolution": Vector2i(1920, 1080),
 	"vsync": true,
-	"fullscreen": false,
+	"fullscreen": true,
 	"volume": 1.0
 }
 
 var settings: Dictionary = {}
 
-
 func _ready():
 	load_settings()
 	apply_settings()
-
 
 func get_setting_value(key: String) -> Variant:
 	return settings.get(key, DEFAULT_SETTINGS.get(key))

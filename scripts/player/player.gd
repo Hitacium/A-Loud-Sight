@@ -10,7 +10,8 @@ var aimlook_enabled := true
 @onready var player_gui := $PlayerGUI
 @onready var camera := $head/Camera3D
 @onready var player_speed: int = default_speed
-
+var wall_hit_count = 0
+var previous_wall_hit = false
 
 func _ready():
 	$CollisionShape3D/MeshInstance3D.hide()
@@ -43,10 +44,20 @@ func _physics_process(delta: float) -> void:
 		velocity.z = direction.z * player_speed
 	else:
 		velocity.x = move_toward(velocity.x, 0, player_speed)
-		velocity.z = move_toward(velocity.z, 0, player_speed) 
-	
-	move_and_slide()
+		velocity.z = move_toward(velocity.z, 0, player_speed)
 
+	move_and_slide()
+	check_wall()	
+
+func check_wall():
+	if is_on_wall():
+		if not previous_wall_hit:
+			wall_hit_count += 1
+			previous_wall_hit = true
+	else:
+		if previous_wall_hit:
+			previous_wall_hit = false
+			
 func _on_switch_level_2_body_entered(body: Node3D) -> void:
 	if body == $".":
 		call_deferred("_go_to_level_2")

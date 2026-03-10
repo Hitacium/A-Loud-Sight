@@ -1,103 +1,106 @@
-[gd_scene load_steps=5 format=3 uid="uid://bwjws4ptficgv"]
+[gd_scene format=3 uid="uid://bwjws4ptficgv"]
 
 [ext_resource type="Script" uid="uid://ddxdx0jr4w2m4" path="res://scripts/player/player_gui.gd" id="1_bb8x2"]
-[ext_resource type="Texture2D" uid="uid://bulteu43r2r6a" path="res://assets/ui/crosshair.png" id="2_hq6nb"]
 [ext_resource type="Script" uid="uid://dxlq8f26j8nve" path="res://scripts/ui/pause_node.gd" id="3_edw3b"]
 [ext_resource type="PackedScene" uid="uid://bs035oor8cgug" path="res://scenes/ui/settings_window.tscn" id="4_vexfy"]
 
-[node name="PlayerGUI" type="CanvasLayer"]
+[node name="PlayerGUI" type="CanvasLayer" unique_id=1345818852 node_paths=PackedStringArray("stopwatch_label")]
 script = ExtResource("1_bb8x2")
+stopwatch_label = NodePath("Stopwatch")
 
-[node name="TextureRect" type="TextureRect" parent="."]
+[node name="PauseNode" type="Control" parent="." unique_id=1981005115]
+process_mode = 3
+visible = false
+layout_mode = 3
+anchors_preset = 0
+offset_right = 1920.0
+offset_bottom = 1080.0
+script = ExtResource("3_edw3b")
+
+[node name="ColorRect" type="ColorRect" parent="PauseNode" unique_id=921127630]
+layout_mode = 0
+offset_right = 1920.0
+offset_bottom = 1080.0
+color = Color(0, 0, 0, 0.52549)
+
+[node name="Settings" parent="PauseNode" unique_id=335582743 instance=ExtResource("4_vexfy")]
+layout_mode = 1
+offset_left = -111.0
+offset_top = -125.5
+offset_right = 111.0
+offset_bottom = 125.5
+
+[node name="Main" type="Control" parent="PauseNode" unique_id=1460951158]
+layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -5.0
-offset_top = -5.0
-offset_right = 5.0
-offset_bottom = 5.0
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
 grow_horizontal = 2
 grow_vertical = 2
-texture = ExtResource("2_hq6nb")
-expand_mode = 1
 
-[node name="PauseNode" type="Control" parent="."]
-process_mode = 3
-visible = false
-layout_mode = 3
-anchors_preset = 0
-offset_right = 1153.0
-offset_bottom = 649.0
-script = ExtResource("3_edw3b")
-
-[node name="ColorRect" type="ColorRect" parent="PauseNode"]
-layout_mode = 0
-offset_right = 1161.0
-offset_bottom = 655.0
-color = Color(0, 0, 0, 0.52549)
-
-[node name="Settings" parent="PauseNode" instance=ExtResource("4_vexfy")]
-layout_mode = 0
-anchors_preset = 0
-anchor_left = 0.0
-anchor_top = 0.0
-anchor_right = 0.0
-anchor_bottom = 0.0
-offset_left = 462.0
-offset_top = 213.0
-offset_right = 684.0
-offset_bottom = 464.0
-grow_horizontal = 1
-grow_vertical = 1
-
-[node name="Main" type="Control" parent="PauseNode"]
-anchors_preset = 0
-offset_right = 40.0
-offset_bottom = 40.0
-
-[node name="Label" type="Label" parent="PauseNode/Main"]
+[node name="Label" type="Label" parent="PauseNode/Main" unique_id=1362425432]
 layout_mode = 1
-anchors_preset = 4
+anchors_preset = 8
+anchor_left = 0.5
 anchor_top = 0.5
+anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = 11.0
-offset_top = 187.0
-offset_right = 305.0
-offset_bottom = 245.0
+offset_left = -147.0
+offset_top = -220.0
+offset_right = 147.0
+offset_bottom = -162.0
+grow_horizontal = 2
 grow_vertical = 2
 theme_override_font_sizes/font_size = 42
 text = "GAME PAUSED"
 
-[node name="VBoxContainer" type="VBoxContainer" parent="PauseNode/Main"]
+[node name="VBoxContainer" type="VBoxContainer" parent="PauseNode/Main" unique_id=1150844379]
 layout_mode = 1
-anchors_preset = 4
+anchors_preset = 8
+anchor_left = 0.5
 anchor_top = 0.5
+anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = 15.0
-offset_top = 250.0
-offset_right = 248.0
-offset_bottom = 386.0
+offset_left = -116.5
+offset_top = -68.0
+offset_right = 116.5
+offset_bottom = 68.0
+grow_horizontal = 2
 grow_vertical = 2
 
-[node name="Button" type="Button" parent="PauseNode/Main/VBoxContainer"]
+[node name="Button" type="Button" parent="PauseNode/Main/VBoxContainer" unique_id=186832813]
 layout_mode = 2
 text = "Continue"
 
-[node name="Button2" type="Button" parent="PauseNode/Main/VBoxContainer"]
+[node name="Button2" type="Button" parent="PauseNode/Main/VBoxContainer" unique_id=1634472364]
 layout_mode = 2
 text = "Settings"
 
-[node name="Button3" type="Button" parent="PauseNode/Main/VBoxContainer"]
+[node name="Button3" type="Button" parent="PauseNode/Main/VBoxContainer" unique_id=696983866]
 layout_mode = 2
 text = "Exit to menu"
 
-[node name="Button4" type="Button" parent="PauseNode/Main/VBoxContainer"]
+[node name="Button4" type="Button" parent="PauseNode/Main/VBoxContainer" unique_id=1762738333]
 layout_mode = 2
 text = "Exit to desktop"
 
-[node name="DebugInfoLabel" type="Label" parent="."]
+[node name="Stopwatch" type="Label" parent="." unique_id=1661049658]
+offset_left = 819.0
+offset_top = 72.0
+offset_right = 1101.0
+offset_bottom = 160.0
+theme_override_font_sizes/font_size = 64
+text = "00:00:00"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="DebugInfoLabel" type="Label" parent="." unique_id=1142033325]
 visible = false
 offset_right = 185.0
 offset_bottom = 94.0

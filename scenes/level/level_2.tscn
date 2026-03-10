@@ -1,6 +1,7 @@
 [gd_scene format=4 uid="uid://cptwn4uo2csih"]
 
 [ext_resource type="PackedScene" uid="uid://brpt71jl5cg2q" path="res://scenes/player/player.tscn" id="1_ao1bm"]
+[ext_resource type="Script" uid="uid://b1ncdgsq3tarr" path="res://scenes/player/stopwatch.gd" id="2_liyy4"]
 [ext_resource type="PackedScene" uid="uid://bhsvys1diibm3" path="res://scenes/props/lamp_standing.tscn" id="2_u7l0e"]
 [ext_resource type="PackedScene" uid="uid://cpqfrijrfy35m" path="res://scenes/props/bed_double_a_2.tscn" id="3_m25sp"]
 [ext_resource type="PackedScene" uid="uid://4r8qa2dl2xwg" path="res://scenes/props/cabinet_small_decorated_2.tscn" id="4_72p4d"]
@@ -57,6 +58,9 @@ data = SubResource("VoxelGIData_lvcdb")
 
 [node name="Player" parent="." unique_id=1961441588 instance=ExtResource("1_ao1bm")]
 transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 12.0771885, 0.7634804, 0.62391806)
+
+[node name="Stopwatch" type="Node" parent="." unique_id=1540670951 groups=["stopwatch"]]
+script = ExtResource("2_liyy4")
 
 [node name="Room" type="Node" parent="." unique_id=804717931]
 

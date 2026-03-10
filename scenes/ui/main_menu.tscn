@@ -20,7 +20,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-color = Color(0.21751943, 0.00024202548, 0.3046876, 1)
+color = Color(0.1266079, 0.0063689454, 0.068175726, 1)
 
 [node name="Label" type="Label" parent="." unique_id=2012516554]
 layout_mode = 1
@@ -74,7 +74,6 @@ theme_override_font_sizes/font_size = 64
 text = "Exit to desktop"
 
 [node name="Settings" parent="." unique_id=2014990133 instance=ExtResource("2_c8enf")]
-visible = true
 layout_mode = 1
 offset_left = -111.0
 offset_top = -125.5
