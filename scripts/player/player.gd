@@ -57,9 +57,16 @@ func check_wall():
 	else:
 		if previous_wall_hit:
 			previous_wall_hit = false
-			
+		
+func save_level(level_name: String):
+	var stopwatch = get_tree().get_first_node_in_group("stopwatch")
+	stopwatch.stop()
+	var time = stopwatch.get_time_seconds()
+	ExperimentManager.add_level_data(level_name, wall_hit_count, time)
+
 func _on_switch_level_2_body_entered(body: Node3D) -> void:
 	if body == $".":
+		save_level("level1")
 		call_deferred("_go_to_level_2")
 		
 func _go_to_level_2():
@@ -67,10 +74,13 @@ func _go_to_level_2():
 
 func _on_switch_level_3_body_entered(body: Node3D) -> void:
 	if body == $".":
+		save_level("level2")
 		call_deferred("_go_to_level_3")
 
 func _go_to_level_3() -> void:
 	get_tree().change_scene_to_file("res://scenes/level/level_3.tscn")
 
 func _on_the_end_body_entered(_body: Node3D) -> void:
+	save_level("level3")
+	ExperimentManager.save_to_file()
 	get_tree().quit()

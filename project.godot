@@ -24,6 +24,7 @@ config/icon="uid://wj5d0r1e7eej"
 
 SettingsHandler="*res://scripts/autoload/settings_handler.gd"
 GameManager="*res://scripts/autoload/game_manager.gd"
+ExperimentManager="*uid://oxtfce5qtxtl"
 
 [display]
 
