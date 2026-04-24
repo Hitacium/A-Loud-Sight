@@ -2,6 +2,7 @@
 
 [ext_resource type="Script" uid="uid://kg3ojqet1g4d" path="res://scripts/player/player.gd" id="1_yofdb"]
 [ext_resource type="PackedScene" uid="uid://bwjws4ptficgv" path="res://scenes/player/player_gui.tscn" id="2_ywley"]
+[ext_resource type="AudioStream" uid="uid://jnlopbixq4in" path="res://assets/wall_bonk.wav" id="3_lvxji"]
 [ext_resource type="Script" uid="uid://njwl204ar4m5" path="res://scripts/player/sonifier.gd" id="3_qhqgy"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_p0oft"]
@@ -28,6 +29,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.6, 0)
 [node name="Camera3D" type="Camera3D" parent="head" unique_id=1566804085]
 
 [node name="Sonifier" type="AudioStreamPlayer" parent="head" unique_id=2095334213]
+volume_db = -12.0
 script = ExtResource("3_qhqgy")
 
 [node name="DebugPreview" type="TextureRect" parent="head/Sonifier" unique_id=1115796373]
@@ -42,5 +44,9 @@ render_target_update_mode = 1
 
 [node name="CaptureCamera" type="Camera3D" parent="head/Sonifier/ScreenchotViewport" unique_id=146705316]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.6, 0)
+
+[node name="WallBonk" type="AudioStreamPlayer" parent="head" unique_id=1422848842]
+stream = ExtResource("3_lvxji")
+volume_db = 6.0
 
 [node name="PlayerGUI" parent="." unique_id=614238825 instance=ExtResource("2_ywley")]

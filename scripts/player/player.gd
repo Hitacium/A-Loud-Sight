@@ -3,12 +3,18 @@ extends CharacterBody3D
 
 @export var default_speed := 3
 @export var mouse_sensitivity := 0.1
+@export var gamepad_sensitivity := 1.5
+@export var gamepad_deadzone := 0.15
+
 var input_enabled := true
 var aimlook_enabled := true
+
+
 
 @onready var head := $head
 @onready var player_gui := $PlayerGUI
 @onready var camera := $head/Camera3D
+@onready var wall_bonk := $head/WallBonk
 @onready var player_speed: int = default_speed
 var wall_hit_count = 0
 var previous_wall_hit = false
@@ -51,13 +57,37 @@ func _physics_process(delta: float) -> void:
 		velocity.x = move_toward(velocity.x, 0, player_speed)
 		velocity.z = move_toward(velocity.z, 0, player_speed)
 
+	if aimlook_enabled:
+		_handle_gamepad_look(delta)
+
 	move_and_slide()
 	check_wall()	
+
+func _handle_gamepad_look(delta: float) -> void:
+	var stick := Vector2(
+		Input.get_joy_axis(0, JOY_AXIS_RIGHT_X),
+		Input.get_joy_axis(0, JOY_AXIS_RIGHT_Y)
+	)
+	
+	if stick.length() < gamepad_deadzone:
+		return
+		
+	# Remap to start movement only past deadzone
+	stick = (stick - stick.normalized() * gamepad_deadzone) / (1.0 - gamepad_deadzone)
+	
+	rotation_degrees.y -= stick.x * gamepad_sensitivity * delta * 100.0
+	head.rotation_degrees.x -= stick.y * gamepad_sensitivity * delta * 100.0
+	
+	# Limite du pitch camera
+	head.rotation_degrees.x = clamp(head.rotation_degrees.x, -80, 80)
 
 func check_wall():
 	if is_on_wall():
 		if not previous_wall_hit:
 			wall_hit_count += 1
+			# start_joy_vibration(device, weak_magnitude, strong_magnitude, duration)
+			Input.start_joy_vibration(0, 1, 0, 0.3)
+			wall_bonk.play()
 			previous_wall_hit = true
 	else:
 		if previous_wall_hit:
