@@ -4,7 +4,7 @@ const SAMPLE_RATE := 44100 # in Hz
 const DOWNSAMPLE_W := 32
 const DOWNSAMPLE_H := 32
 const FREQ_MIN := 300.0 # in Hz
-const FREQ_MAX := 18000.0 # in Hz
+const FREQ_MAX := 16000.0 # in Hz
 
 @export var osc_length := 0.05 # in seconds
 @export var debug_preview := true
@@ -79,7 +79,7 @@ func create_audio_from_image(pixels: PackedByteArray) -> void:
 
 		for y in range(DOWNSAMPLE_H):
 			var brightness := pixels[y * DOWNSAMPLE_W + x]
-			if brightness < 10:
+			if brightness < 15:
 				continue
 
 			var amp := (float(brightness) / 255.0) * 0.4

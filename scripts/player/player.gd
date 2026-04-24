@@ -19,15 +19,20 @@ func _ready():
 	GameManager.player = self
 
 
-func _unhandled_input(event : InputEvent) -> void:
+func _unhandled_input(event: InputEvent) -> void:
 	if not aimlook_enabled:
 		return
+
 	if event is InputEventMouseMotion and Input.mouse_mode == Input.MOUSE_MODE_CAPTURED:
-		var mouseInput : Vector2
-		mouseInput.x += event.relative.x
-		mouseInput.y += event.relative.y
-		self.rotation_degrees.y -= mouseInput.x * mouse_sensitivity
-		head.rotation_degrees.x -= mouseInput.y * mouse_sensitivity
+		var mouseInput: Vector2
+		mouseInput.x = event.relative.x * mouse_sensitivity
+		mouseInput.y = event.relative.y * mouse_sensitivity
+		
+		rotation_degrees.y -= mouseInput.x
+		head.rotation_degrees.x -= mouseInput.y
+		
+		# Limite du pitch camera
+		head.rotation_degrees.x = clamp(head.rotation_degrees.x, -80, 80)
 
 
 func _physics_process(delta: float) -> void:
