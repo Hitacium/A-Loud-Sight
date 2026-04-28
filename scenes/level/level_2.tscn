@@ -97,6 +97,7 @@ size = Vector3(10, 4, 1)
 
 [node name="Pillar" type="CSGCylinder3D" parent="Room" unique_id=1729153007]
 transform = Transform3D(-4.3711168e-08, 0, 0.9999963, 0, 1, 0, -0.9999963, 0, -4.3711168e-08, -7.3126554, 2, -2.8059082)
+use_collision = true
 radius = 0.7
 height = 4.0
 sides = 64

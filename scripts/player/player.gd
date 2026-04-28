@@ -9,8 +9,6 @@ extends CharacterBody3D
 var input_enabled := true
 var aimlook_enabled := true
 
-
-
 @onready var head := $head
 @onready var player_gui := $PlayerGUI
 @onready var camera := $head/Camera3D
