@@ -14,9 +14,9 @@ func _ready():
 	load_settings()
 	apply_settings()
 
+# Renvoie la valeur actuelle d'une clé, ou la valeur par défaut en cas d'échec
 func get_setting_value(key: String) -> Variant:
 	return settings.get(key, DEFAULT_SETTINGS.get(key))
-	
 	
 func apply_settings() -> void:
 	var resolution: Vector2i = get_setting_value("resolution")
@@ -26,7 +26,7 @@ func apply_settings() -> void:
 	else:
 		DisplayServer.window_set_mode(DisplayServer.WINDOW_MODE_WINDOWED)
 
-	# Center window only if windowed
+	# Centre la fenêtre si ce n'est pas le cas
 	if DisplayServer.window_get_mode() == DisplayServer.WINDOW_MODE_WINDOWED:
 		DisplayServer.window_set_size(resolution)
 	
@@ -46,11 +46,10 @@ func apply_settings() -> void:
 		linear_to_db(get_setting_value("volume"))
 	)
 
-
 func save_settings() -> void:
 	var to_save: Dictionary = settings.duplicate(true)
 
-	# Convert Vector2i to array for JSON
+	# Converti le Vector2i vers un JSON
 	if "resolution" in to_save and typeof(to_save["resolution"]) == TYPE_VECTOR2I:
 		var r: Vector2i = to_save["resolution"]
 		to_save["resolution"] = [r.x, r.y]
@@ -59,7 +58,6 @@ func save_settings() -> void:
 	if file:
 		file.store_string(JSON.stringify(to_save))
 		file.close()
-
 
 func load_settings() -> void:
 	if not FileAccess.file_exists(SETTINGS_FILE_PATH):
@@ -77,12 +75,11 @@ func load_settings() -> void:
 		settings = DEFAULT_SETTINGS.duplicate(true)
 		settings.merge(data as Dictionary, true)
 
-	# Convert resolution back to Vector2i
+	# Converti la résolution en Vector2i
 	if "resolution" in settings and typeof(settings["resolution"]) == TYPE_ARRAY:
 		var arr: Array = settings["resolution"]
 		if arr.size() == 2:
 			settings["resolution"] = Vector2i(arr[0], arr[1])
-
 
 func get_resolution_as_str() -> String:
 	var r: Vector2i = get_setting_value("resolution")

@@ -19,7 +19,6 @@ func add_level_data(level_name, wall_hits, time_seconds):
 	}
 	
 	data["levels"].append(level_data)
-	
 	save_to_file()
 
 func save_to_file():

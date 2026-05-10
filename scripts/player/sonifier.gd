@@ -1,12 +1,12 @@
 extends AudioStreamPlayer
 
-const SAMPLE_RATE := 44100 # in Hz
+const SAMPLE_RATE := 44100 # en Hz
 const DOWNSAMPLE_W := 32
 const DOWNSAMPLE_H := 32
-const FREQ_MIN := 300.0 # in Hz
-const FREQ_MAX := 16000.0 # in Hz
+const FREQ_MIN := 300.0 # en Hz
+const FREQ_MAX := 16000.0 # en Hz
 
-@export var osc_length := 0.05 # in seconds
+@export var osc_length := 0.05 # durée des oscillateurs pour chaque colonne, en secondes
 @export var debug_preview := true
 @export var logarithmic_distribution := true
 
@@ -18,41 +18,42 @@ var thread: Thread
 @onready var capture_camera: Camera3D = $ScreenchotViewport/CaptureCamera
 @onready var preview: TextureRect = $DebugPreview
 
-
 func _ready() -> void:
 	init_audio_streaming()
 	preview.visible = debug_preview
 	preview.texture_filter = CanvasItem.TEXTURE_FILTER_NEAREST
 
-
 var time_since_last_capture: float = 0
+
 func _process(delta: float) -> void:
 	time_since_last_capture += delta
+	# Déclenche un nouvelle capture après que le scan soit fini
 	var scan_time := osc_length * DOWNSAMPLE_W
 	if time_since_last_capture >= scan_time:
 		time_since_last_capture = 0.0
 		capture_frame()
 
-
 func init_audio_streaming() -> void:
 	var generator := AudioStreamGenerator.new()
 	generator.mix_rate = SAMPLE_RATE
-	generator.buffer_length = osc_length * DOWNSAMPLE_W + 0.1
+	generator.buffer_length = osc_length * DOWNSAMPLE_W + 0.1 # Petite marge de buffer
 	stream = generator
 	play()
 	audio_stream_playback = get_stream_playback()
 
-
 func capture_frame() -> void:
+	# Attendre que le thread précédent soit fini avant d'en commencer un nouveau
 	if thread and thread.is_started():
 		thread.wait_to_finish()
 
+	# Copie du point de vue de la caméra principale pour la capture
 	capture_camera.global_transform = main_camera.global_transform
 	capture_camera.fov = main_camera.fov
+	
 	capture_viewport.render_target_update_mode = SubViewport.UPDATE_ONCE
-
 	await RenderingServer.frame_post_draw
 
+	# Sous-échantillonnage en niveaux de gris
 	var img: Image = capture_viewport.get_texture().get_image()
 	img.resize(DOWNSAMPLE_W, DOWNSAMPLE_H, Image.INTERPOLATE_LANCZOS)
 	img.convert(Image.FORMAT_L8)
@@ -63,7 +64,6 @@ func capture_frame() -> void:
 	thread = Thread.new()
 	thread.start(create_audio_from_image.bind(img.get_data()))
 
-
 func create_audio_from_image(pixels: PackedByteArray) -> void:
 	var column_samples := int(osc_length * SAMPLE_RATE)
 	var total_samples := column_samples * DOWNSAMPLE_W
@@ -73,6 +73,8 @@ func create_audio_from_image(pixels: PackedByteArray) -> void:
 
 	for x in range(DOWNSAMPLE_W):
 		var start_idx := x * column_samples
+		# Associer la position de la colonne au panning
+		# la racine carré provient du problème de puissance totale au centre
 		var pan := float(x) / float(max(1, DOWNSAMPLE_W - 1))
 		var l_gain := sqrt(1.0 - pan)
 		var r_gain := sqrt(pan)
@@ -87,7 +89,7 @@ func create_audio_from_image(pixels: PackedByteArray) -> void:
 			var step := TAU * freq / SAMPLE_RATE
 			var phase := 0.0
 
-			# Hann window per whole column
+			# Hann window par colonne entière
 			for i in range(column_samples):
 				var idx := start_idx + i
 				if idx >= total_samples:
@@ -105,8 +107,8 @@ func create_audio_from_image(pixels: PackedByteArray) -> void:
 	normalize_buffer(buffer)
 	call_deferred("_push_audio", buffer)
 
-
 func normalize_buffer(buffer: PackedVector2Array) -> void:
+	# supprime la moyenne (DC-offset) + évite l'écrêtement
 	var sum_l := 0.0
 	var sum_r := 0.0
 	var n := buffer.size()
@@ -132,20 +134,18 @@ func normalize_buffer(buffer: PackedVector2Array) -> void:
 		for i in range(n):
 			buffer[i] *= inv
 
-
 func _push_audio(buffer: PackedVector2Array) -> void:
 	if not audio_stream_playback:
 		return
 	if audio_stream_playback.can_push_buffer(buffer.size()):
 		audio_stream_playback.push_buffer(buffer)
 
-
+# Attribution des fréquences à la hauteur du pixel
 func get_frequency(y: int) -> float:
 	var t := float(DOWNSAMPLE_H - y - 1) / float(DOWNSAMPLE_H - 1)
 	if logarithmic_distribution:
 		return FREQ_MIN * pow(FREQ_MAX / FREQ_MIN, t)
 	return lerp(FREQ_MIN, FREQ_MAX, t)
-
 
 func _exit_tree():
 	if thread and thread.is_started():

@@ -14,6 +14,8 @@ var aimlook_enabled := true
 @onready var camera := $head/Camera3D
 @onready var wall_bonk := $head/WallBonk
 @onready var player_speed: int = default_speed
+
+# variables concernant les collisions avec les murs pour les expériences
 var wall_hit_count = 0
 var previous_wall_hit = false
 
@@ -26,7 +28,8 @@ func _ready():
 func _unhandled_input(event: InputEvent) -> void:
 	if not aimlook_enabled:
 		return
-
+		
+	# mouse input
 	if event is InputEventMouseMotion and Input.mouse_mode == Input.MOUSE_MODE_CAPTURED:
 		var mouseInput: Vector2
 		mouseInput.x = event.relative.x * mouse_sensitivity
@@ -46,6 +49,7 @@ func _physics_process(delta: float) -> void:
 	if not is_on_floor():
 		velocity += get_gravity() * delta
 	
+	# mouvement relatif à la direction du regard du joueur
 	var input_dir := Input.get_vector("left", "right", "up", "down")
 	var direction := (transform.basis * Vector3(input_dir.x, 0, input_dir.y)).normalized()
 	if direction:
@@ -57,7 +61,6 @@ func _physics_process(delta: float) -> void:
 
 	if aimlook_enabled:
 		_handle_gamepad_look(delta)
-
 	move_and_slide()
 	check_wall()	
 
@@ -70,7 +73,7 @@ func _handle_gamepad_look(delta: float) -> void:
 	if stick.length() < gamepad_deadzone:
 		return
 		
-	# Remap to start movement only past deadzone
+	# Remap pour commencer le mouvement juste après la deadzone
 	stick = (stick - stick.normalized() * gamepad_deadzone) / (1.0 - gamepad_deadzone)
 	
 	rotation_degrees.y -= stick.x * gamepad_sensitivity * delta * 100.0
@@ -81,6 +84,7 @@ func _handle_gamepad_look(delta: float) -> void:
 
 func check_wall():
 	if is_on_wall():
+		# déclencheur oneshot
 		if not previous_wall_hit:
 			wall_hit_count += 1
 			# start_joy_vibration(device, weak_magnitude, strong_magnitude, duration)
@@ -96,6 +100,8 @@ func save_level(level_name: String):
 	stopwatch.stop()
 	var time = stopwatch.get_time_seconds()
 	ExperimentManager.add_level_data(level_name, wall_hit_count, time)
+
+# -- Changement de niveau --
 
 func _on_switch_level_2_body_entered(body: Node3D) -> void:
 	if body == $".":
@@ -114,6 +120,7 @@ func _go_to_level_3() -> void:
 	get_tree().change_scene_to_file("res://scenes/level/level_3.tscn")
 
 func _on_the_end_body_entered(_body: Node3D) -> void:
+	# Sauvegarde le fichier des expériences et quitte le jeu
 	save_level("level3")
 	ExperimentManager.save_to_file()
 	get_tree().quit()

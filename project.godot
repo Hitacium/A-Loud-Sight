@@ -26,6 +26,10 @@ SettingsHandler="*res://scripts/autoload/settings_handler.gd"
 GameManager="*res://scripts/autoload/game_manager.gd"
 ExperimentManager="*uid://oxtfce5qtxtl"
 
+[debug]
+
+gdscript/warnings/integer_division=0
+
 [display]
 
 window/size/viewport_width=1920

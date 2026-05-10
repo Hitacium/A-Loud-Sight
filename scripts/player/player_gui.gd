@@ -22,11 +22,13 @@ func update_stopwatch_label():
 	stopwatch_label.text = stopwatch.time_to_string()
 
 func _input(event) -> void:
+	# Activer le menu debug avec F1
 	if event.is_action_pressed("debug"):
 		debuginfo.visible = !debuginfo.visible
 		debugLoop()
 
 func debugLoop():
+	# Raffraichissement des infos de debug
 	while debuginfo.visible:
 		debuginfo.text = DEBUG_TEMPLATE.format({
 			"plrstate": GameManager.player.currentState,
